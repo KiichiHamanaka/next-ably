@@ -11,23 +11,23 @@ const AblyChatComponent = () => {
     const [receivedMessages, setMessages] = useState([]);
     const messageTextIsEmpty = messageText.trim().length === 0;
 
-    const [channel, ably] = useChannel("chat-demo", (message) => {
+    const [channel, ably] = useChannel("chat-demo", (message: any) => {
         const history = receivedMessages.slice(-199);
         setMessages([...history, message]);
     });
 
-    const sendChatMessage = (messageText) => {
+    const sendChatMessage = (messageText: string) => {
         channel.publish({ name: "chat-message", data: messageText });
         setMessageText("");
         inputBox.focus();
     }
 
-    const handleFormSubmission = (event) => {
+    const handleFormSubmission = (event:any) => {
         event.preventDefault();
         sendChatMessage(messageText);
     }
 
-    const handleKeyPress = (event) => {
+    const handleKeyPress = (event:any) => {
         if (event.charCode !== 13 || messageTextIsEmpty) {
             return;
         }
