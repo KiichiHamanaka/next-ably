@@ -3,7 +3,7 @@ import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
 const AblyChatComponent = dynamic(() => import('../components/AblyChatComponent'), { ssr: false });
-
+console.log(process.env.NEXT_PUBLIC_ABLY_API_KEY)
 export default function Home() {
     return (
         <div className="container">
